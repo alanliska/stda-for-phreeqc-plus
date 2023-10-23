@@ -143,7 +143,8 @@
       write(14,*)'load ',fname
 
 
-      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+!      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+      write(15,'(a,i0,a)')'<h2>NTO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
       open(unit=13,file=fname)
@@ -325,8 +326,10 @@
       write(15,'(a)')'</html>'
       write(*,*)'NTOs written'
  21   format(a,2i7,3f16.8)
- 22   format(i,3x,a)
- 23   format(a,3x,i,3x,a)
+! 22   format(i,3x,a)
+ 22   format(i0,3x,a)
+! 23   format(a,3x,i,3x,a)
+ 23   format(a,3x,i0,3x,a)
  24   format(2f16.8)
  25   format(3f16.8)
  26   format(a,i5.5,a,i5.5,a)
@@ -504,7 +507,8 @@
       write(14,*)'load ',fname
 
 
-      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+!      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+      write(15,'(a,i0,a)')'<h2>NTO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
       open(unit=13,file=fname)
@@ -779,8 +783,10 @@
       write(15,'(a)')'</html>'
       write(*,*)'NTOs written'
  21   format(a,2i7,3f16.8)
- 22   format(i,3x,a)
- 23   format(a,3x,i,3x,a)
+! 22   format(i,3x,a)
+ 22   format(i0,3x,a)
+! 23   format(a,3x,i,3x,a)
+ 23   format(a,3x,i0,3x,a)
  24   format(2f16.8)
  25   format(3f16.8)
  26   format(a,i5.5,a,i5.5,a)
@@ -1439,7 +1445,8 @@
       write(14,*)'load ',fname
 
 
-      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+!      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+      write(15,'(a,i0,a)')'<h2>NTO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
       open(unit=13,file=fname)
@@ -1716,8 +1723,10 @@
       write(15,'(a)')'</html>'
       write(*,*)'NTOs written'
  21   format(a,2i7,3f16.8)
- 22   format(i,3x,a)
- 23   format(a,3x,i,3x,a)
+! 22   format(i,3x,a)
+ 22   format(i0,3x,a)
+! 23   format(a,3x,i,3x,a)
+ 23   format(a,3x,i0,3x,a)
  24   format(2f16.8)
  25   format(3f16.8)
  26   format(a,i5.5,a,i5.5,a)
@@ -1896,7 +1905,8 @@
             ! Compute the participation ratio
       !PR_nto=sum(SIGMA**2.0)**2.0/sum(SIGMA**4.0) should be reformulate in term of the response
 
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       alpha=0.0
       alpha_X=0.0
       alpha_Y=0.0
@@ -1920,7 +1930,8 @@
       if(sum(SIGMA)<0.0001)go to 128
       write(*,*)'#wavelength:',k,'PR_NROs',PR_nto,'Prop.',sum(alpha)
       endif
-      if(flag3==.false.)then
+!      if(flag3==.false.)then
+      if(flag3 .eqv. .false.)then
       alpha=0.0
       alpha_X=0.0
       alpha_Y=0.0
@@ -1947,7 +1958,8 @@
       write(14,*)'load ',fname
 
 
-      write(15,'(a,i,a)')'<h2>NRO ',k,'</h2>'
+!      write(15,'(a,i,a)')'<h2>NRO ',k,'</h2>'
+      write(15,'(a,i0,a)')'<h2>NRO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
       open(unit=13,file=fname)
@@ -2044,7 +2056,8 @@
      .alpha_Y(i)**2.0/sum(alpha_Y**2.0).GT.0.01.or.
      .alpha_Z(i)**2.0/sum(alpha_Z**2.0).GT.0.01)then !only diagonal for the weight !!!!!
 
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       if(axe==1)then
       write(*,28) i,alpha(i)**2.0/sum(alpha**2.0),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2061,7 +2074,8 @@
      .'=',SIGMA(i)*M_Z(i)*2.0
       endif
       endif
-      if(flag3==.false.)then
+!      if(flag3==.false.)then
+      if(flag3 .eqv. .false.)then
       if(axe==1)then
       write(*,28) i,alpha_X(i)**2.0/sum(alpha_X**2.0),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2189,8 +2203,10 @@
       write(*,*)'NROs written'
       write(*,*)
  21   format(a,2i7,3f16.8)
- 22   format(i,3x,a)
- 23   format(a,3x,i,3x,a)
+! 22   format(i,3x,a)
+ 22   format(i0,3x,a)
+! 23   format(a,3x,i,3x,a)
+ 23   format(a,3x,i0,3x,a)
  24   format(2f16.8)
  25   format(3f16.8)
  26   format(a,i5.5,a,i5.5,a,i1,a)
@@ -2304,7 +2320,8 @@
 
       ! For descriptors
       INQUIRE(FILE="fragments", EXIST=file_exists)
-      if(file_exists==.true.)then
+!      if(file_exists==.true.)then
+      if(file_exists .eqv. .true.)then
       open(unit=40,file='fragments',status='old')
       read(40,*)num_frag
       allocate(num_atom(num_frag),frag(num_frag,ncent))
@@ -2420,7 +2437,8 @@
       enddo
       write(*,*)'omega'
       Do i=1,num_frag
-      write(*,'(i,3x,50f12.3)') i,omega(i,:)
+!      write(*,'(i,3x,50f12.3)') i,omega(i,:)
+      write(*,'(i0,3x,50f12.3)') i,omega(i,:)
       enddo
       write(*,*)'sum_omega',sum(omega)
       !write(*,*)
@@ -2484,7 +2502,8 @@
       write(15,'(a)')'</tr>'
 
       ! Print density nros in the case of OR
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
 
 
       write(dummy,'(a,i1,a)')'jmol-den-',axe,'.spt'
@@ -2572,7 +2591,8 @@
       enddo
             ! Compute the participation ratio
 
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       alpha=0.0
       alpha_X=0.0
       alpha_Y=0.0
@@ -2596,7 +2616,8 @@
       if(sum(SIGMA)<0.0001)go to 128
       write(*,*)'#wavelength:',k,'PR_NROs',PR_nto,'Prop.',sum(alpha)
       endif
-      if(flag3==.false.)then
+!      if(flag3==.false.)then
+      if(flag3 .eqv. .false.)then
       alpha=0.0
       alpha_X=0.0
       alpha_Y=0.0
@@ -2623,7 +2644,8 @@
       write(14,*)'load ',fname
 
 
-      write(15,'(a,i,a)')'<h2>NRO ',k,'</h2>'
+!      write(15,'(a,i,a)')'<h2>NRO ',k,'</h2>'
+      write(15,'(a,i0,a)')'<h2>NRO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
       open(unit=13,file=fname)
@@ -2713,7 +2735,8 @@
       enddo
       counter=0
       !Densities nros
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       max_minus=0
       max_plus=0
       endif
@@ -2727,7 +2750,8 @@
      .abs(alpha_Y(i))/sum(abs(alpha_Y)).GT.0.03.or.
      .abs(alpha_Z(i))/sum(abs(alpha_Z)).GT.0.03)then !only diagonal for the weight !!!!!
       !Densities nros
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       if(alpha(i)>0.0)then
       max_plus=max_plus+1
       iplus(max_plus,1)=i
@@ -2740,7 +2764,8 @@
       endif
       endif
       !!!!!!!!!!!!!!!!!!!!
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then      
       if(axe==1)then
       write(*,28) i,abs(alpha(i))/sum(abs(alpha)),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2757,7 +2782,8 @@
      .'=',SIGMA(i)*M_Z(i)*2.0
       endif
       endif
-      if(flag3==.false.)then
+!      if(flag3==.false.)then
+      if(flag3 .eqv. .false.)then      
       if(axe==1)then
       write(*,28) i,abs(alpha_X(i))/sum(abs(alpha_X)),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2882,7 +2908,8 @@
       enddo
       write(15,*)'</table>'
       !!! Signed densities
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       ! write a fake mo to keep normalization when printing densities
       write(13,*) 'Sym= Particle'
       write(13,*) 'Ene=',100.0
@@ -2895,7 +2922,8 @@
       !!!!!!
       close(13)
       !!! Signed densities
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then      
 
 
       write(35,'(a)')'<h2>Densities NROs </h2>'
@@ -3013,7 +3041,8 @@
 
  128  enddo
       !!! Signed sum
-      if(flag3==.true.)then
+!      if(flag3==.true.)then
+      if(flag3 .eqv. .true.)then
       write(35,'(a)')'</body>'
       write(35,'(a)')'</html>'
       endif
@@ -3023,8 +3052,10 @@
       write(*,*)'NROs written'
       write(*,*)
  21   format(a,2i7,3f16.8)
- 22   format(i,3x,a)
- 23   format(a,3x,i,3x,a)
+! 22   format(i,3x,a)
+ 22   format(i0,3x,a)
+! 23   format(a,3x,i,3x,a)
+ 23   format(a,3x,i0,3x,a)
  24   format(2f16.8)
  25   format(3f16.8)
  26   format(a,i5.5,a,i5.5,a,i1,a)

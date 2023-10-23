@@ -725,10 +725,12 @@ c Linear Response functions *
       open(unit=53,file='amb',form='unformatted',status='old')
       read(53) amb
       close(53,status='delete')
-      if(velo_OR==.false.)call optrot(nci,apb,amb,iconf,maxconf,
+!      if(velo_OR==.false.)call optrot(nci,apb,amb,iconf,maxconf,
+      if(velo_OR .eqv. .false.)call optrot(nci,apb,amb,iconf,maxconf,
      .xl,yl,zl,moci,no,nv,xm,ym,zm,xmolw)
-      if(velo_OR==.true.)call optrot_velo(nci,apb,amb,iconf,maxconf,
-     .xv,yv,zv,moci,no,nv,xm,ym,zm,xmolw)
+!      if(velo_OR==.true.)call optrot_velo(nci,apb,amb,iconf,maxconf,
+      if(velo_OR .eqv. .true.)call optrot_velo(nci,apb,amb,iconf,
+     .maxconf,xv,yv,zv,moci,no,nv,xm,ym,zm,xmolw)
       call cpu_time(end_time)
       print '("Opt. Rot.   Time = ",f12.2," minutes.")'
      .      ,(end_time-start_time)/60.0

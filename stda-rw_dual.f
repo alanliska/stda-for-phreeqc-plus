@@ -581,7 +581,8 @@ c Identify important occupied MOs for the atom list
        j=1
        k=1
        Do i=1,no
-       if(mo_list(i)==.true.)then
+!       if(mo_list(i)==.true.)then
+       if(mo_list(i) .eqv. .true.)then
        mocc_1(j)=i
        j=j+1
        else
@@ -591,9 +592,11 @@ c Identify important occupied MOs for the atom list
        enddo
        !write(*,*)mocc_1
        !write(*,*)mocc_2
-       write(*,'(a,f6.2,a,i)')' num. of occ. MOs with a
+!       write(*,'(a,f6.2,a,i)')' num. of occ. MOs with a
+       write(*,'(a,f6.2,a,i0)')' num. of occ. MOs with a
      . threshold of',thresh(1),' eV :',n_MO(1)
-       write(*,'(a,f6.2,a,i)')' num. of occ. MOs with a
+!       write(*,'(a,f6.2,a,i)')' num. of occ. MOs with a
+       write(*,'(a,f6.2,a,i0)')' num. of occ. MOs with a
      . threshold of',thresh(2),' eV :',n_MO(2)
        thresh=thresh/27.211385050d0
 
@@ -843,10 +846,12 @@ c Linear Response functions *
       open(unit=53,file='amb',form='unformatted',status='old')
       read(53) amb
       close(53,status='delete')
-      if(velo_OR==.false.)call optrot(nci,apb,amb,iconf,maxconf,
+!      if(velo_OR==.false.)call optrot(nci,apb,amb,iconf,maxconf,
+      if(velo_OR .eqv. .false.)call optrot(nci,apb,amb,iconf,maxconf,
      .xl,yl,zl,moci,no,nv,xm,ym,zm,xmolw)
-      if(velo_OR==.true.)call optrot_velo(nci,apb,amb,iconf,maxconf,
-     .xv,yv,zv,moci,no,nv,xm,ym,zm,xmolw)
+!      if(velo_OR==.true.)call optrot_velo(nci,apb,amb,iconf,maxconf,
+      if(velo_OR .eqv. .true.)call optrot_velo(nci,apb,amb,iconf,
+     .maxconf,xv,yv,zv,moci,no,nv,xm,ym,zm,xmolw)
       call cpu_time(end_time)
       print '("Opt. Rot.   Time = ",f12.2," minutes.")'
      .      ,(end_time-start_time)/60.0

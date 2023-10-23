@@ -1,38 +1,24 @@
 
 PROG    = stda
 
-OSTYPE=LINUXI
 #--------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 
-ifeq ($(OSTYPE),LINUXI)
-   FC = ifort 
+   FC = aarch64-linux-android-gfortran.exe 
   # FC = lfc
-   CC = gcc
+   CC = aarch64-linux-android-gcc.exe 
   
   ### multithread ###
-   LINKER = ifort -static -qopenmp  -I$(MKLROOT)/include/intel64/lp64 -I$(MKLROOT)/include 
-    LIBS = $(MKLROOT)/lib/intel64/libmkl_blas95_lp64.a $(MKLROOT)/lib/intel64/libmkl_lapack95_lp64.a -Wl,--start-group $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_core.a $(MKLROOT)/lib/intel64/libmkl_intel_thread.a -Wl,--end-group -lpthread -lm
+   LINKER = aarch64-linux-android-gfortran.exe -pie
+    LIBS = ../../libs-aarch64/liblapack.a ../../libs-aarch64/libblas.a
   
   ### sequential ###
   # LINKER = ifort -static
   # LIBS = ${MKLROOT}/lib/intel64/libmkl_blas95_lp64.a ${MKLROOT}/lib/intel64/libmkl_lapack95_lp64.a -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_core.a $(MKLROOT)/lib/intel64/libmkl_sequential.a -Wl,--end-group -lpthread -lm
   
-   CFLAGS = -O -DLINUX
-   FFLAGS = -O3 -qopenmp -I$(MKLROOT)/include/intel64/lp64 -I$(MKLROOT)/include
-endif
-
-ifeq ($(OSTYPE),MACOS)
-    FC = ifort
-    CC = gcc 
-    LINKER = ifort  -qopenmp  -I$(MKLROOT)/include/intel64/lp64 -I$(MKLROOT)/include
-    LIBS =  ${MKLROOT}/lib/libmkl_blas95_lp64.a ${MKLROOT}/lib/libmkl_intel_lp64.a ${MKLROOT}/lib/libmkl_intel_thread.a ${MKLROOT}/lib/libmkl_core.a -liomp5 -lpthread -lm -ldl     
-    PREFLAG = -E -P
-    FFLAGS = -O3 -qopenmp -I$(MKLROOT)/include/intel64/lp64 -I$(MKLROOT)/include #-check all
-    FFLAGS = -O3  -I${MKLROOT}/include/intel64/lp64 -I${MKLROOT}/include 
-    CCFLAGS = -O3 -DLINUX
-endif
+   CFLAGS = -O -DLINUX -pie
+   FFLAGS = -O3 -pie -w  -fno-range-check -std=legacy
 
 #################################################
 OBJS=\
@@ -52,8 +38,8 @@ OBJS=\
 	$(FC) $(FFLAGS) -c $< -o $@
 
 $(PROG):     $(OBJS) 
-		@echo  "Loading $(PROG) ... "
-		@$(LINKER) $(OBJS) $(LIBS) -o $(PROG)
+#		@echo  "Loading $(PROG) ... "
+		$(LINKER) -o $(PROG) $(OBJS) $(LIBS) 
 
 clean:
 	rm -f *.o *.mod $(PROG)

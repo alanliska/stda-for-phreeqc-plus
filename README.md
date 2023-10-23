@@ -1,5 +1,19 @@
 # *stda* program for computing excited states and response functions via simplified TD-DFT methods (sTDA, sTD-DFT, and SF-sTD-DFT)
 
+#### This is the STDA fork used in the mobile app PHREEQC plus ####
+
+# Changes in this fork #
+
+* alternative Makefile (for cross-compilation)
+
+# Compilation #
+
+make
+
+The provided Makefile refers to aarch64 version. For the others (arm, x86, x86_64) change the compiler name. 
+
+####
+
 This project provides the `stda` program.
 
 ## Installation

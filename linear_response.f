@@ -59,7 +59,7 @@
       integer ::ix,iy,iz
 
       real*4 ::start_time,end_time
-
+      
       character(len=14):: dummy
 
       mu=0.0
@@ -4120,7 +4120,8 @@ c B4 n iy ix
      .=================='
 
       INQUIRE(FILE="wavelength", EXIST=file_exists)
-      if(file_exists==.false.)then
+!      if(file_exists==.false.)then
+      if(file_exists .eqv. .false.)then
       num_freq=1
       allocate(freq(1))
       freq(1)=45.56335/589.30
@@ -4361,7 +4362,8 @@ c refractive index of solvent
      .=================='
       write(*,*)'VELOCITY REPRESENTATION (ORIGIN INDEPENDENT)'
       INQUIRE(FILE="wavelength", EXIST=file_exists)
-      if(file_exists==.false.)then
+      if(file_exists .eqv. .false.)then
+!      if(file_exists==.false.)then
       num_freq=1
       allocate(freq(1))
       freq(1)=45.56335/589.30
@@ -4608,13 +4610,13 @@ c refractive index of solvent
 
 
       real*4 ::start_time,end_time
-
-      real*4 ::alpha_xx,alpha_xy,alpha_xz
+      
+      real*4 ::alpha_xx,alpha_xy,alpha_xz      
       real*4 ::alpha_yy,alpha_yz
       real*4 ::alpha_zz
-
+      
       if(nroot<num_trans)stop 'number of 2PA excitations too large!'
-
+      
       open(unit=60,file='2PA-abs',status='replace')
 
       mu=0.0
@@ -4656,9 +4658,9 @@ c refractive index of solvent
                  idum1=max(io,iv)
                  idum2=min(io,iv)
                  ij=idum2+idum1*(idum1-1)/2
-           mu_x(j)=-real(xl(ij),4)
-           mu_y(j)=-real(yl(ij),4)
-           mu_z(j)=-real(zl(ij),4)
+           mu_x(j)=-2.0*real(xl(ij),4)
+           mu_y(j)=-2.0*real(yl(ij),4)
+           mu_z(j)=-2.0*real(zl(ij),4)
              enddo
 !$omp end do
 !$omp end parallel
@@ -4668,7 +4670,7 @@ c refractive index of solvent
       XmY(:,:)=0.0
       X(:,:)=0.0
       Y(:,:)=0.0
-      omega=-eci(ii)/2.0
+      omega=eci(ii)/2.0
       call cpu_time(start_time)
       allocate(inv_resp(nci*(nci+1)/2))
       inv_resp=apb-omega**2.0*inv_amb
@@ -4827,7 +4829,7 @@ c sigma  sigma = -A + B
       call TPA_resp_fast_SP(ix,iy,X,Y,Xci,Yci,nroot,
      .            A_list,B_list,counter_A,counter_B,
      .            mu,maxconf,no,nv,nci,moci,ii,iconf,A,B)
-      sigma(ix,iy)=(-A+B)/2.0
+      sigma(ix,iy)=(-A+B)
       if(ix/=iy)then
       sigma(iy,ix)=sigma(ix,iy)
       endif

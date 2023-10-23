@@ -95,7 +95,8 @@ c set variables for RPA diagonalization
 ! testing print Z
 !      call prmat4(6,z,n,n,'Z')
 
-      if(TPA==.false.)then
+      if(TPA .eqv. .false.)then
+!      if(TPA==.false.)then
       ij=0
       do i=1,n
          ij=ij+i
