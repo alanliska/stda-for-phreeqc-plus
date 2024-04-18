@@ -507,7 +507,7 @@
       write(14,*)'load ',fname
 
 
-!      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
+ !      write(15,'(a,i,a)')'<h2>NTO ',k,'</h2>'
       write(15,'(a,i0,a)')'<h2>NTO ',k,'</h2>'
       write(15,'(a)')'<table>'
 
@@ -2765,7 +2765,7 @@
       endif
       !!!!!!!!!!!!!!!!!!!!
 !      if(flag3==.true.)then
-      if(flag3 .eqv. .true.)then      
+      if(flag3 .eqv. .true.)then
       if(axe==1)then
       write(*,28) i,abs(alpha(i))/sum(abs(alpha)),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2783,7 +2783,7 @@
       endif
       endif
 !      if(flag3==.false.)then
-      if(flag3 .eqv. .false.)then      
+      if(flag3 .eqv. .false.)then
       if(axe==1)then
       write(*,28) i,abs(alpha_X(i))/sum(abs(alpha_X)),
      .' XX  2.0*',M_X(i),'*',SIGMA(i),
@@ -2923,7 +2923,7 @@
       close(13)
       !!! Signed densities
 !      if(flag3==.true.)then
-      if(flag3 .eqv. .true.)then      
+      if(flag3 .eqv. .true.)then
 
 
       write(35,'(a)')'<h2>Densities NROs </h2>'

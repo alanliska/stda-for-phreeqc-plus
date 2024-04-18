@@ -58,10 +58,10 @@
       write(*,'('' With contributions from:'')')
       write(*,'('' C. Bannwarth, P. Shushkov, M. de Wergifosse'')')
       write(*,*)
-      write(*,'('' Special version for Android (aarch64, pie)'')')
+      write(*,'('' Special version for Android (x86_64, pie)'')')
       write(*,'('' linked with BLAS and LAPACK libraries'')')
       write(*,'('' compiled by A. Liska & V. Ruzickova'')')
-      write(*,'('' on June 24, 2023.'')')
+      write(*,'('' on April 15, 2024.'')')
       write(*,'(a,a)')'===============================================',
      .                 '======================='
       write(*,*)
@@ -113,7 +113,7 @@ c read the tm2xx file, otherwise (-f option) the tm2molden file
       rw=.false.
       rw_dual=.false.
       pt_off=.false.
-!      optrot=.false.
+!     optrot=.false.
       optrot = transfer(.false.,optrot)
 
 ! check for input file
@@ -267,8 +267,7 @@ c read the tm2xx file, otherwise (-f option) the tm2molden file
       if(index(dummy,'-oprot').ne.0)then
       rpachk=.true.
       optrota=.true.
-!      velo_OR=.false.
-      velo_OR = transfer(.false.,velo_OR)
+      velo_OR=.false.
       call getarg(i+1,dummy)
       call readl(79,dummy,xx,nn)
       if(xx(1)==1)velo_OR=.true.

@@ -5,20 +5,20 @@ PROG    = stda
 
 #-------------------------------------------------------------------------
 
-   FC = aarch64-linux-android-gfortran.exe 
+   FC = aarch64-linux-android-gfortran
   # FC = lfc
-   CC = aarch64-linux-android-gcc.exe 
+   CC = aarch64-linux-android-gcc
   
   ### multithread ###
-   LINKER = aarch64-linux-android-gfortran.exe -pie
+   LINKER = aarch64-linux-android-gfortran -pie -fPIC
     LIBS = ../../libs-aarch64/liblapack.a ../../libs-aarch64/libblas.a
   
   ### sequential ###
   # LINKER = ifort -static
   # LIBS = ${MKLROOT}/lib/intel64/libmkl_blas95_lp64.a ${MKLROOT}/lib/intel64/libmkl_lapack95_lp64.a -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_core.a $(MKLROOT)/lib/intel64/libmkl_sequential.a -Wl,--end-group -lpthread -lm
   
-   CFLAGS = -O -DLINUX -pie
-   FFLAGS = -O3 -pie -w  -fno-range-check -std=legacy
+   CFLAGS = -O -DLINUX -pie -fPIC
+   FFLAGS = -O3 -pie -w  -fno-range-check -std=legacy -fPIC
 
 #################################################
 OBJS=\

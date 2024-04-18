@@ -735,7 +735,7 @@ cccccccccccccccccccccccccccc
 ! search for string in input
       subroutine findstr(str,lenstr,ifile,i,n)
       use strings 
-!      implicit none 
+      implicit none 
       character*(lenstr), intent( in ) :: str
       integer, intent( in ) :: lenstr,i,n,ifile
       character*(lenstr) arg(10)
